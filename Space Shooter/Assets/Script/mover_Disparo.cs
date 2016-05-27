@@ -3,7 +3,7 @@ using System.Collections;
 
 public class mover_Disparo : MonoBehaviour {
 
-    float speed = 10f;
+    float speed = 33f;
 
     /*
 	// Use this for initialization
