@@ -37,15 +37,14 @@ public class Mover_Nave : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        speed = 0.3f; // Es la velocidad a la que se mueve la nave
-
+        speed = 0.15f; // Es la velocidad a la que se mueve la nave
+        bulletLayer = gameObject.layer;
     }
 
     // Update is called once per frame
     void Update()
     {
         mover();
-        bulletLayer = gameObject.layer;
         // dispararNave();
     }
 
@@ -106,7 +105,7 @@ public class Mover_Nave : MonoBehaviour {
 
         cooldownTimer -= Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && cooldownTimer <= 0)
+        if (Input.GetKey(disparar) && cooldownTimer <= 0)
         {
             // SHOOT!
             cooldownTimer = fireDelay;

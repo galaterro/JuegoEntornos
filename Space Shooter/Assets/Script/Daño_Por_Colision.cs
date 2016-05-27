@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Daño_Por_Colision : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void OnCollisionEnter2D()
+    {
+        Debug.Log("Collision!");
+    }
+
+    void OnTriggerEnter2D()
+    {
+        Debug.Log("Trigger!");
+    }
 }
