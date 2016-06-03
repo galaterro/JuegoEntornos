@@ -3,7 +3,7 @@ using System.Collections;
 
 public class mover_Disparo : MonoBehaviour
 {
-
+    public float interval;
     float speed = 30f;
 
     /*
@@ -19,6 +19,7 @@ public class mover_Disparo : MonoBehaviour
         Vector3 velocity = new Vector3(speed * Time.deltaTime, 0, 0);
         pos += transform.rotation * velocity;
         transform.position = pos;
+        Destroy(gameObject, interval);
     }
 
     void OnTriggerEnter2D()
