@@ -29,6 +29,7 @@ public class DamageHandler : MonoBehaviour {
 
 	void OnTriggerEnter2D() {
 		health--;
+        //BarraVida.Damage(health);
 
 		if(invulnPeriod > 0) {
 			invulnTimer = invulnPeriod;

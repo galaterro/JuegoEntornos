@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class mover_Disparo : MonoBehaviour {
+public class mover_Disparo : MonoBehaviour
+{
 
     float speed = 30f;
 
@@ -11,11 +12,17 @@ public class mover_Disparo : MonoBehaviour {
         //GetComponent<Rigidbody>().velocity = transform.forward * speed;
     }
 	*/
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         Vector3 pos = transform.position;
         Vector3 velocity = new Vector3(speed * Time.deltaTime, 0, 0);
         pos += transform.rotation * velocity;
         transform.position = pos;
-	}
+    }
+
+    void OnTriggerEnter2D()
+    {
+        Destroy(gameObject);
+    }
 }
