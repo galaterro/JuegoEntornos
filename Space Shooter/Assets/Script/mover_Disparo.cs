@@ -19,9 +19,12 @@ public class mover_Disparo : MonoBehaviour
         Vector3 velocity = new Vector3(speed * Time.deltaTime, 0, 0);
         pos += transform.rotation * velocity;
         transform.position = pos;
+        morir(); //Destroy(gameObject, interval);
+    }
+    void morir()
+    {
         Destroy(gameObject, interval);
     }
-
     void OnTriggerEnter2D()
     {
         Destroy(gameObject);

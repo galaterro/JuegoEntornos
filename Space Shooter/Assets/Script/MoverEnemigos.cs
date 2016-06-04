@@ -13,6 +13,7 @@ public class MoverEnemigos : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         mover();
+        morir();
 	}
     void mover()
     {
@@ -24,5 +25,10 @@ public class MoverEnemigos : MonoBehaviour {
         transform.position = pos;
         //Destroy(gameObject, interval);
     
+    }
+
+    void morir()
+    {
+        Destroy(gameObject, interval);
     }
 }

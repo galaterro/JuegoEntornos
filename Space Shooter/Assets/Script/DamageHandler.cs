@@ -4,6 +4,8 @@ using System.Collections;
 public class DamageHandler : MonoBehaviour {
 
 	public int health = 1;
+    public GameObject explosion;
+    public GameObject playerExplosion;
 
 	public float invulnPeriod = 0;
 	float invulnTimer = 0;
@@ -57,10 +59,17 @@ public class DamageHandler : MonoBehaviour {
 
 		if(health <= 0) {
 			Die();
+
 		}
 	}
 
 	void Die() {
+        
+        Instantiate(explosion, transform.position, transform.rotation);
+        if(tag == "Player")
+        {
+            Instantiate(playerExplosion, transform.position, transform.rotation);
+        }
 		Destroy(gameObject);
 	}
 
