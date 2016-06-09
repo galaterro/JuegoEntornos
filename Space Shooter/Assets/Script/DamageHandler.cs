@@ -3,61 +3,57 @@ using System.Collections;
 
 public class DamageHandler : MonoBehaviour {
 
-	public int health = 1;
+	public int vida = 1;
     public GameObject explosion;
     public GameObject playerExplosion;
 
-	public float invulnPeriod = 0;
-	float invulnTimer = 0;
-	int correctLayer;
+	public float periodoInvulnerabilidad = 0;
+	float relojInvulnerabilidad = 0;
+	int LayerCorrecto;
 
-	SpriteRenderer spriteRend;
+	SpriteRenderer spriteRenderer;
 
 	void Start() {
-		correctLayer = gameObject.layer;
+        LayerCorrecto = gameObject.layer;
 
-		// NOTE!  This only get the renderer on the parent object.
-		// In other words, it doesn't work for children. I.E. "enemy01"
-		spriteRend = GetComponent<SpriteRenderer>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 
-		if(spriteRend == null) {
-			spriteRend = transform.GetComponentInChildren<SpriteRenderer>();
+		if(spriteRenderer == null) {
+            spriteRenderer = transform.GetComponentInChildren<SpriteRenderer>();
 
-			if(spriteRend==null) {
-				Debug.LogError("Object '"+gameObject.name+"' has no sprite renderer.");
-			}
+			
 		}
 	}
 
 	void OnTriggerEnter2D() {
-		health--;
+		vida--;
         //BarraVida.Damage(health);
 
-		if(invulnPeriod > 0) {
-			invulnTimer = invulnPeriod;
+		if(periodoInvulnerabilidad > 0) {
+            relojInvulnerabilidad = periodoInvulnerabilidad;
 			gameObject.layer = 10;
 		}
 	}
 
 	void Update() {
 
-		if(invulnTimer > 0) {
-			invulnTimer -= Time.deltaTime;
+		if(relojInvulnerabilidad > 0) {
+            relojInvulnerabilidad -= Time.deltaTime;
 
-			if(invulnTimer <= 0) {
-				gameObject.layer = correctLayer;
-				if(spriteRend != null) {
-					spriteRend.enabled = true;
+			if(relojInvulnerabilidad <= 0) {
+				gameObject.layer = LayerCorrecto;
+				if(spriteRenderer != null) {
+                    spriteRenderer.enabled = true;
 				}
 			}
 			else {
-				if(spriteRend != null) {
-					spriteRend.enabled = !spriteRend.enabled;
+				if(spriteRenderer != null) {
+                    spriteRenderer.enabled = !spriteRenderer.enabled;
 				}
 			}
 		}
 
-		if(health <= 0) {
+		if(vida <= 0) {
 			Die();
 
 		}
@@ -65,11 +61,11 @@ public class DamageHandler : MonoBehaviour {
 
 	void Die() {
         
-        Instantiate(explosion, transform.position, transform.rotation);
+        /*Instantiate(explosion, transform.position, transform.rotation);
         if(tag == "Player")
         {
             Instantiate(playerExplosion, transform.position, transform.rotation);
-        }
+        }*/
 		Destroy(gameObject);
 	}
 

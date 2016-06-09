@@ -24,12 +24,12 @@ public class Mover_Nave : MonoBehaviour {
 
     //Copiao
 
-    public Vector3 bulletOffset = new Vector3(0, 0.5f, 0);
+    public Vector3 disparo= new Vector3(0, 0.5f, 0);
 
-    public GameObject bulletPrefab;
-    int bulletLayer;
+    public GameObject disparoPrefab;
+    int disparoLayer;
 
-    public float fireDelay = 0.25f;
+    public float velocidadDisparo= 0.25f;
     float cooldownTimer = 0;
 
     
@@ -38,7 +38,7 @@ public class Mover_Nave : MonoBehaviour {
     void Start()
     {
         speed = 0.15f; // Es la velocidad a la que se mueve la nave
-        bulletLayer = gameObject.layer;
+        disparoLayer = gameObject.layer;
     }
 
     // Update is called once per frame
@@ -108,26 +108,14 @@ public class Mover_Nave : MonoBehaviour {
         if (Input.GetKey(disparar) && cooldownTimer <= 0)
         {
             // SHOOT!
-            cooldownTimer = fireDelay;
+            cooldownTimer = velocidadDisparo;
 
-            Vector3 offset = transform.rotation * bulletOffset;
+            Vector3 offset = transform.rotation * disparo;
 
-            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, transform.position + offset, transform.rotation);
-            bulletGO.layer = bulletLayer;
+            GameObject bala = (GameObject)Instantiate(disparoPrefab, transform.position + offset, transform.rotation);
+            bala.layer = disparoLayer;
         }
 
     }
-    // Funcion que hace que dispare la nave
-
-    /* public void dispararNave()
-     {
-         if (Input.GetKey(disparar) && Time.time > nextFire)
-         {
-             nextFire = Time.time + fireRate;
-             Instantiate(shot, shotSpawn.position, shotSpawn.rotation); //Para que salgan varios disparos, hay que instanciarlo, pasandole un objeto, la posicion y la rotacion.
-
-
-         }
-     }*/
 
 }

@@ -8,29 +8,29 @@ public class Oleadas : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
-        public string name;
-        public Transform enemy;
-        public int count;
-        public float rate;
+        public string nombreOleada;
+        public Transform enemigo;
+        public int numeroEnemigos;
+        public float velocidadAparicion;
     }
 
     public int rotacionyEnemigo1 = 180;
     public int rotacionzEnemigo2 = 90;
     public Wave[] waves;
-    private int nextWave = 0;
+    private int siguienteOleada = 0;
 
-    public Transform[] spawnPoints;
+    public Transform[] puntosSpawn;
 
-    public float timeBeteenWaves = 5f;
-    private float waveCountdown;
+    public float tiempoEntreOleadas = 5f;
+    private float cuentraAtrasOleada;
 
-    private float searchCountdown = 1f;
+    private float buscadorCuentaAtras = 1f;
 
     private SpawnState state = SpawnState.COUNTIG;
 
     void Start()
     {
-        waveCountdown = timeBeteenWaves;
+        cuentraAtrasOleada = tiempoEntreOleadas;
     }
 
     // Update is called once per frame
@@ -38,9 +38,9 @@ public class Oleadas : MonoBehaviour
     {
         if (state == SpawnState.WAITING)
         {
-            if (!EnemyIsAlive())
+            if (!enemigosVivos())
             {
-                WaveCompleted();
+                OleadaCompleta();
             }
             else
             {
@@ -48,40 +48,40 @@ public class Oleadas : MonoBehaviour
             }
         }
 
-        if (waveCountdown <= 0)
+        if (cuentraAtrasOleada <= 0)
         {
             if (state != SpawnState.SPAWNING)
             {
-                StartCoroutine(SpawnWave(waves[nextWave]));
+                StartCoroutine(SpawnOleada(waves[siguienteOleada]));
             }
         }
         else
         {
-            waveCountdown -= Time.deltaTime;
+            cuentraAtrasOleada -= Time.deltaTime;
         }
     }
 
-    void WaveCompleted()
+    void OleadaCompleta()
     {
         state = SpawnState.COUNTIG;
-        waveCountdown = timeBeteenWaves;
-        if (nextWave + 1 > waves.Length - 1)
+        cuentraAtrasOleada = tiempoEntreOleadas;
+        if (siguienteOleada + 1 > waves.Length - 1)
         {
-            nextWave = 0;
+            siguienteOleada = 0;
             Debug.Log("Has completado todas las oleadas");
         }
         else
         {
-            nextWave++;
+            siguienteOleada++;
         }
     }
 
-    bool EnemyIsAlive()
+    bool enemigosVivos()
     {
-        searchCountdown -= Time.deltaTime;
-        if (searchCountdown <= 0f)
+        buscadorCuentaAtras -= Time.deltaTime;
+        if (buscadorCuentaAtras <= 0f)
         {
-            searchCountdown = 1f;
+            buscadorCuentaAtras = 1f;
             if (GameObject.FindGameObjectWithTag("Enemy1") == null)
             {
                 return false;
@@ -90,25 +90,24 @@ public class Oleadas : MonoBehaviour
         return true;
     }
 
-    IEnumerator SpawnWave(Wave _wave)
+    IEnumerator SpawnOleada(Wave _wave)
     {
         state = SpawnState.SPAWNING;
-        for (int i = 0; i < _wave.count; i++)
+        for (int i = 0; i < _wave.numeroEnemigos; i++)
         {
-            SpawnEnemy(_wave.enemy);
-            yield return new WaitForSeconds(1f / _wave.rate);
+            SpawnEnemigos(_wave.enemigo);
+            yield return new WaitForSeconds(1f / _wave.velocidadAparicion);
         }
         state = SpawnState.WAITING;
         yield break;
     }
 
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemigos(Transform _enemy)
     {
-        // Debug.Log("SE ha spawmeado el enemigo:" + _enemy.name);
         
             Quaternion roty = transform.rotation;
             roty = Quaternion.Euler(0, rotacionyEnemigo1, 0);
-            Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+            Transform _sp = puntosSpawn[Random.Range(0, puntosSpawn.Length)];
             Instantiate(_enemy, _sp.position, roty);       
     }
 }
