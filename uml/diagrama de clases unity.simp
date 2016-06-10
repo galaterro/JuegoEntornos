@@ -40,19 +40,15 @@
         <value>1</value>
       </counter>
       <counter>
-        <item-type type="UmlFragment" />
+        <item-type stereotype="" type="UmlFragment" />
         <value>4</value>
       </counter>
       <counter>
-        <item-type type="ConcreteUmlActivationBar" />
+        <item-type stereotype="" type="UmlSequenceAction" />
         <value>10</value>
       </counter>
       <counter>
-        <item-type type="UmlSequenceAction" />
-        <value>10</value>
-      </counter>
-      <counter>
-        <item-type type="UmlDestroy" />
+        <item-type stereotype="" type="UmlDestroy" />
         <value>2</value>
       </counter>
     </entity-names>
@@ -90,36 +86,32 @@
         <value>2</value>
       </counter>
       <counter>
-        <item-type stereotype="" type="UmlAssociation" />
+        <item-type stereotype="" type="UmlFragment" />
+        <value>5</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlActivationBar" />
+        <value>11</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlComment" />
+        <value>4</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlCommentConnector" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlSequenceAction" />
+        <value>11</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlDestroy" />
         <value>3</value>
       </counter>
       <counter>
         <item-type type="AbstractElementGroup" />
-        <value>75</value>
-      </counter>
-      <counter>
-        <item-type type="UmlFragment" />
-        <value>5</value>
-      </counter>
-      <counter>
-        <item-type type="UmlActivationBar" />
-        <value>11</value>
-      </counter>
-      <counter>
-        <item-type type="UmlComment" />
-        <value>4</value>
-      </counter>
-      <counter>
-        <item-type type="UmlCommentConnector" />
-        <value>2</value>
-      </counter>
-      <counter>
-        <item-type type="UmlSequenceAction" />
-        <value>11</value>
-      </counter>
-      <counter>
-        <item-type type="UmlDestroy" />
-        <value>3</value>
+        <value>7</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -713,7 +705,7 @@
           </item>
           <item id="di157999274682692109" cid="SM014" type="sequence-action" name="Message14" style-class="" visibility="package" change-tracking-state="added" creation-date="06/10/2016 02:23:20">
             <style class="default" />
-            <sequence-action type="reply" message="vidaTotal" is-asynchronous="false" to="di335722030935345257" return-value="" assign-to-variable="">
+            <sequence-action type="reply" message="vidaTotal" is-asynchronous="false" from="di114873299491728478" to="di335722030935345257" return-value="" assign-to-variable="">
               <parameters />
             </sequence-action>
           </item>
@@ -834,7 +826,7 @@
           </item>
           <item id="di404916938211902793" cid="SM001" type="sequence-action" name="Message1" style-class="" visibility="package" change-tracking-state="added" creation-date="06/10/2016 12:22:38">
             <style class="default" />
-            <sequence-action type="send" message="daño - captación de daño" is-asynchronous="false" from="di233823071997337259" to="di220062576944825332" return-value="" assign-to-variable="">
+            <sequence-action type="send" message="daño = captación de daño" is-asynchronous="false" from="di233823071997337259" to="di220062576944825332" return-value="" assign-to-variable="">
               <parameters />
             </sequence-action>
           </item>
@@ -850,7 +842,7 @@
           </item>
           <item id="di220699347737091661" cid="SM002" type="sequence-action" name="Message2" style-class="" visibility="package" change-tracking-state="added" creation-date="06/10/2016 12:25:31">
             <style class="default" />
-            <sequence-action type="send" message="fin de barra de vida- muerte del jugador" is-asynchronous="false" from="di538376748174249581" to="di497335531948831215" return-value="" assign-to-variable="">
+            <sequence-action type="send" message="fin de barra de vida = muerte del jugador" is-asynchronous="false" from="di538376748174249581" to="di497335531948831215" return-value="" assign-to-variable="">
               <parameters />
             </sequence-action>
           </item>
@@ -870,7 +862,7 @@
           </item>
           <item id="di399957909711577564" cid="SM008" type="sequence-action" name="Message8" style-class="" visibility="package" change-tracking-state="added" creation-date="06/10/2016 12:30:09">
             <style class="default" />
-            <sequence-action type="send" message="envia posicion" is-asynchronous="false" from="di584817724778220899" to="di294421045513969418" return-value="" assign-to-variable="">
+            <sequence-action type="send" message="enemigos = envia posicion" is-asynchronous="false" from="di584817724778220899" to="di294421045513969418" return-value="" assign-to-variable="">
               <parameters />
             </sequence-action>
           </item>
