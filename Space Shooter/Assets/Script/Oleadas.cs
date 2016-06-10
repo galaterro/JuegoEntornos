@@ -103,8 +103,7 @@ public class Oleadas : MonoBehaviour
     }
 
     void SpawnEnemigos(Transform _enemy)
-    {
-        
+    {    
             Quaternion roty = transform.rotation;
             roty = Quaternion.Euler(0, rotacionyEnemigo1, 0);
             Transform _sp = puntosSpawn[Random.Range(0, puntosSpawn.Length)];

@@ -22,7 +22,6 @@ public class Mover_Nave : MonoBehaviour {
 
 
 
-    //Copiao
 
     public Vector3 disparo= new Vector3(0, 0.5f, 0);
 
@@ -101,13 +100,11 @@ public class Mover_Nave : MonoBehaviour {
             transform.Translate(0,-finalSpeed, 0);
         }
 
-        //Copiao
 
         cooldownTimer -= Time.deltaTime;
 
         if (Input.GetKey(disparar) && cooldownTimer <= 0)
         {
-            // SHOOT!
             cooldownTimer = velocidadDisparo;
 
             Vector3 offset = transform.rotation * disparo;

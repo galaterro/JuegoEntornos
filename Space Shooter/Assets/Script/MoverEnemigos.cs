@@ -23,7 +23,6 @@ public class MoverEnemigos : MonoBehaviour {
         pos += transform.rotation * velocity;
         
         transform.position = pos;
-        //Destroy(gameObject, interval);
     
     }
 
